@@ -17,7 +17,7 @@
 
   <style>
     html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+      background: url(https://rare-gallery.com/uploads/posts/1017333-illustration-monochrome-anime-Neon-Genesis-Evangelion-darkness-mecha-computer-wallpaper-black-and-white-monochrome-photography.png);
       background-size: cover;
       font-family: 'helvetica neue';
       text-align: center;
@@ -36,14 +36,14 @@
     .clock {
       width: 30rem;
       height: 30rem;
-      border: 20px solid white;
+      border: 20px solid rgb(161, 30, 168);
       border-radius: 50%;
       margin: 50px auto;
       position: relative;
       padding: 2rem;
       box-shadow:
         0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 0 3px #04ff00,
         inset 0 0 10px black,
         0 0 10px rgba(0,0,0,0.2);
     }
@@ -52,20 +52,44 @@
       position: relative;
       width: 100%;
       height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
+      transform: translateY(-3px);
+      transform: rotate(90deg);
     }
 
     .hand {
       width: 50%;
       height: 6px;
-      background: black;
+      background: #04ff00;
       position: absolute;
       top: 50%;
+      transform-origin: 100%;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
+
   </style>
 
   <script>
+    const secondHand = document.querySelector('.second-hand')
+    const minHand = document.querySelector('.min-hand')
+    const hourHand = document.querySelector('.hour-hand')
 
+    function setDate(){
+      const now = new Date();
+
+      const seconds = now.getSeconds();
+      const secondsDegrees = ((seconds/60)*360);
+      secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+      const mins = now.getMinutes();
+      const minsDegrees = ((mins/60)*360);
+      minHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+      const hours = now.getHours();
+      const hoursDegrees = ((hours/12)*360);
+      hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+    }
+
+    setInterval(setDate, 1000);
   </script>
 
 </body>
