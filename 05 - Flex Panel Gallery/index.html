@@ -2,15 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Flex Panels 💪</title>
-  <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
-  <link rel="icon" href="https://fav.farm/✅" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Panels</title>
 </head>
 <body>
   <style>
     html {
       box-sizing: border-box;
-      background: #ffc600;
+      background: #be3131;
       font-family: 'helvetica neue';
       font-size: 20px;
       font-weight: 200;
@@ -46,36 +45,37 @@
       background-size: cover;
       background-position: center;
       flex: 1;
-      justify-content: center;
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
-    .panel2 { background-image:url(https://source.unsplash.com/rFKUFzjPYiQ/1500x1500); }
-    .panel3 { background-image:url(https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&cs=tinysrgb&w=1500&h=1500&fit=crop&s=967e8a713a4e395260793fc8c802901d); }
-    .panel4 { background-image:url(https://source.unsplash.com/ITjiVXcwVng/1500x1500); }
-    .panel5 { background-image:url(https://source.unsplash.com/3MNzGlQM7qs/1500x1500); }
+    .panel1 { background-image:url(https://i.pinimg.com/originals/e8/0d/59/e80d59e305f26a28ddfbf8c7f186de1b.jpg); }
+    .panel2 { background-image:url(https://i.pinimg.com/originals/92/e2/1b/92e21b77d38e09c59f796f595ecf0bc4.jpg); }
+    .panel3 { background-image:url(https://i.pinimg.com/originals/66/54/cc/6654ccb3127f34344b7a6ee922a4acf0.jpg); }
+    .panel4 { background-image:url(https://i.pinimg.com/originals/13/d5/60/13d56079c812b7693c81c8d4b439e385.jpg); }
+    .panel5 { background-image:url(https://i.pinimg.com/originals/b4/15/ba/b415ba7cf12eddc3659ea15634a7a953.jpg); }
 
-    /* Flex Items */
+    /* Flex Children */
     .panel > * {
       margin: 0;
       width: 100%;
       transition: transform 0.5s;
-      flex: 1 0 auto;
       display: flex;
+      flex: 1;
       justify-content: center;
       align-items: center;
     }
 
-    .panel > *:first-child { transform: translateY(-100%); }
+    .panel > *:first-child {transform: translateY(-100%);}
     .panel.open-active > *:first-child { transform: translateY(0); }
-    .panel > *:last-child { transform: translateY(100%); }
+    .panel > *:last-child {transform: translateY(100%);}
     .panel.open-active > *:last-child { transform: translateY(0); }
 
     .panel p {
       text-transform: uppercase;
-      font-family: 'Amatic SC', cursive;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
       font-size: 2em;
     }
@@ -88,14 +88,7 @@
       flex: 5;
       font-size: 40px;
     }
-
-    @media only screen and (max-width: 600px) {
-      .panel p {
-        font-size: 1em;
-      }
-    }
   </style>
-
 
   <div class="panels">
     <div class="panel panel1">
@@ -129,12 +122,10 @@
     const panels = document.querySelectorAll('.panel');
 
     function toggleOpen() {
-      console.log('Hello');
       this.classList.toggle('open');
     }
 
     function toggleActive(e) {
-      console.log(e.propertyName);
       if (e.propertyName.includes('flex')) {
         this.classList.toggle('open-active');
       }
@@ -143,6 +134,5 @@
     panels.forEach(panel => panel.addEventListener('click', toggleOpen));
     panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
   </script>
-
 </body>
 </html>
