@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Code</title>
+</head>
+<body>
+  <video id="myVideo">
+    <source src="krcp2077.mp4" type="video/mp4">
+  </video>
+<script>
+  const vid = document.getElementById("myVideo");
+  vid.style.display = 'none';
+  vid.style.width = '80%';
+  vid.volume = 0;
+  vid.pause();
+
+  const pressed = [];
+  const secretCode = 'keanu';
+
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key);
+    pressed.push(e.key);
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+    if (pressed.join('').includes(secretCode)){
+      vid.play();
+      vid.style.display = 'block';
+      vid.volume = 1;
+      console.log('Keanu Reeves');
+    };
+    console.log(pressed);
+  });
+</script>
+</body>
+</html>
